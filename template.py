@@ -4,7 +4,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-project_name = "KN-ML"
+project_name = "Data_Science_Project"
 
 list_of_files = [
     #".github/workflows/.gitkeep",

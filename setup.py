@@ -15,7 +15,7 @@ def get_requirements(file_path: str) -> List[str]:
     return requirements
 
 setup(
-    name='KN-ML',
+    name='Data_Science_Project',
     version='0.1',
     author='Piyush Agarwal',
     author_email='piyushagarwal2003k@gmail.com',
