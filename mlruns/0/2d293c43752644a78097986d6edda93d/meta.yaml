@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/Data_Science_Project/mlruns/0/2d293c43752644a78097986d6edda93d/artifacts
+end_time: 1755802464028
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2d293c43752644a78097986d6edda93d
+run_name: nebulous-eel-812
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755802447051
+status: 3
+tags: []
+user_id: root
