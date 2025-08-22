@@ -11,10 +11,32 @@ from src.Data_Science_Project.components.model_trainer import ModelTrainer
 from src.Data_Science_Project.components.model_trainer import ModelTrainerConfig
 
 import sys
+import os
+
+# Check MLflow configuration
+def check_mlflow_config():
+    tracking_uri = os.getenv("MLFLOW_TRACKING_URI")
+    username = os.getenv("MLFLOW_TRACKING_USERNAME")
+    password = os.getenv("MLFLOW_TRACKING_PASSWORD")
+    
+    logging.info(f"MLflow Tracking URI: {tracking_uri}")
+    logging.info(f"MLflow Username: {username}")
+    logging.info(f"MLflow Password: {'Set' if password else 'Not set'}")
+    
+    if not all([tracking_uri, username, password]):
+        logging.warning("MLflow environment variables not properly configured!")
+        logging.warning("Run setup_mlflow.py or setup_mlflow.bat to configure MLflow for DagsHub")
+        return False
+    return True
 
 
 if __name__ == "__main__":
     logging.info("Starting the application...")
+
+    # Check MLflow configuration
+    if not check_mlflow_config():
+        logging.error("MLflow not properly configured. Please set up environment variables first.")
+        sys.exit(1)
 
     try:
         # data_transformation_config = DataTransformationConfig()

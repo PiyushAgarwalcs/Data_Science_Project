@@ -126,11 +126,25 @@ class ModelTrainer:
 
 
 
+            # Set MLflow tracking URI and registry URI
+            mlflow.set_tracking_uri("https://dagshub.com/PiyushAgarwalcs/Data_Science_Project.mlflow")
             mlflow.set_registry_uri("https://dagshub.com/PiyushAgarwalcs/Data_Science_Project.mlflow")
+            
+            # Set authentication for DagsHub (you'll need to set these environment variables)
+            # Set these in your system environment or create a .env file:
+            # MLFLOW_TRACKING_USERNAME=your_dagshub_username
+            # MLFLOW_TRACKING_PASSWORD=your_dagshub_token
+            if os.getenv("MLFLOW_TRACKING_USERNAME") and os.getenv("MLFLOW_TRACKING_PASSWORD"):
+                os.environ["MLFLOW_TRACKING_USERNAME"] = os.getenv("MLFLOW_TRACKING_USERNAME")
+                os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv("MLFLOW_TRACKING_PASSWORD")
+            
             tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
             # ML flow
-
+            logging.info(f"MLflow tracking URI: {mlflow.get_tracking_uri()}")
+            logging.info(f"MLflow registry URI: {mlflow.get_registry_uri()}")
+            
+            # Start MLflow run
             with mlflow.start_run():
 
                 predicted_qualities = best_model.predict(X_test)
@@ -146,18 +160,13 @@ class ModelTrainer:
                 mlflow.log_metric("mae", mae)
                 
             
-                # Model registry does not work with file store
-                if tracking_url_type_store != "file":
-                    # Register the model
-                    # There are two ways to log the model
-                    # 1. Log the model with a name
-                    # 2. Register the model with a name
-                    # There are other ways to use the model registry, which depend on the tracking server configuration.
-                    # Here we are using the second way to register the model.
-                    # Link for more details: https://www.mlflow.org/docs/latest/model-registry.html#api-workflow
-                    mlflow.sklearn.log_model(best_model, "model", registered_model_name="StudentScorePredictor")
-                else:
+                # Log the model (without registration to avoid DagsHub compatibility issues)
+                try:
                     mlflow.sklearn.log_model(best_model, "model")
+                    logging.info("Model logged successfully to MLflow")
+                except Exception as e:
+                    logging.warning(f"Could not log model to MLflow: {e}")
+                    logging.info("Continuing without model logging...")
 
 
 
