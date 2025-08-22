@@ -9,4 +9,11 @@ seaborn
 catboost
 xgboost
 mlflow
+fastapi
+uvicorn
+pydantic
+requests
+streamlit
+plotly
+evidently
 #-e .
