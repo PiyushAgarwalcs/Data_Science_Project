@@ -9,4 +9,5 @@ seaborn
 catboost
 xgboost
 mlflow
+flask
 #-e .

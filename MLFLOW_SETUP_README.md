@@ -29,13 +29,8 @@ This guide will help you configure MLflow to track experiments in DagsHub.
 
 3. The script will set environment variables for the current session
 
-### Method 2: Using the Batch Script (Windows)
 
-1. Double-click `setup_mlflow.bat`
-2. Enter your DagsHub username and access token when prompted
-3. The script will set environment variables for the current terminal session
-
-### Method 3: Manual Environment Variable Setup
+### Method 2: Manual Environment Variable Setup
 
 Set these environment variables in your system:
 

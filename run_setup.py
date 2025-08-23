@@ -15,7 +15,7 @@ def setup_and_run():
     os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/PiyushAgarwalcs/Data_Science_Project.mlflow"
     os.environ["MLFLOW_REGISTRY_URI"] = "https://dagshub.com/PiyushAgarwalcs/Data_Science_Project.mlflow"
     os.environ["MLFLOW_TRACKING_USERNAME"] = "PiyushAgarwalcs"
-    os.environ["MLFLOW_TRACKING_PASSWORD"] = "9d35b0b276c3c9af8b66ef1e0ffdf3fb8782525c"
+    os.environ["MLFLOW_TRACKING_PASSWORD"] = "9670ba3bfe60b412debdb67eba605b6f1220b43a"
     
     print("✓ MLflow environment variables set:")
     print(f"  Tracking URI: {os.environ['MLFLOW_TRACKING_URI']}")
